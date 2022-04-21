@@ -17,6 +17,7 @@ import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import vectorwing.farmersdelight.FarmersDelight;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import javax.annotation.Nullable;
 
@@ -50,11 +51,6 @@ public class CookingPotRecipe implements Recipe<RecipeWrapper>
 
 		this.experience = experience;
 		this.cookTime = cookTime;
-	}
-
-	@Override
-	public boolean isSpecial() {
-		return true;
 	}
 
 	@Override
@@ -122,6 +118,12 @@ public class CookingPotRecipe implements Recipe<RecipeWrapper>
 	@Override
 	public RecipeType<?> getType() {
 		return CookingPotRecipe.TYPE;
+	}
+
+	@Override
+	public ItemStack getToastSymbol()
+	{
+		return new ItemStack(ModItems.COOKING_POT.get());
 	}
 
 	private static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<CookingPotRecipe>

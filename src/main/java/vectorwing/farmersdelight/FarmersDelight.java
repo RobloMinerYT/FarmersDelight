@@ -3,6 +3,7 @@ package vectorwing.farmersdelight;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -32,6 +33,10 @@ import javax.annotation.Nonnull;
 public class FarmersDelight
 {
 	public static final String MODID = "farmersdelight";
+	public static final Logger LOGGER = LogManager.getLogger();
+	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
+	public static final RecipeBookType RECIPE_TYPE_COOKING = RecipeBookType.create("COOKING");
 	public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab(FarmersDelight.MODID)
 	{
 		@Nonnull
@@ -41,8 +46,6 @@ public class FarmersDelight
 		}
 	};
 
-	public static final Logger LOGGER = LogManager.getLogger();
-	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
 	public FarmersDelight() {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -62,7 +65,7 @@ public class FarmersDelight
 		ModBiomeFeatures.FEATURES.register(modEventBus);
 		ModSounds.SOUNDS.register(modEventBus);
 		ModBlockEntityTypes.TILES.register(modEventBus);
-		ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
+		ModMenuTypes.MENU_TYPES.register(modEventBus);
 		ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 		ModEntityTypes.ENTITIES.register(modEventBus);
 
